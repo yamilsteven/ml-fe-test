@@ -1,0 +1,9 @@
+$bp-mobile: 300px;
+$bp-tablet: 600px;
+$bp-desktop: 1024px;
+
+$bps: (
+    'mobile': $bp-mobile,
+    'tablet': $bp-tablet,
+    'desktop': $bp-desktop
+);
