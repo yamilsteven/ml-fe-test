@@ -7,3 +7,8 @@ $bps: (
     'tablet': $bp-tablet,
     'desktop': $bp-desktop
 );
+
+.o-container {
+    margin: 0 auto;
+    max-width: 1080px;
+}

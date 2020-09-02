@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route } from 'react-router-dom';
 
 import Search from './components/Search'
 
@@ -10,7 +10,13 @@ class App extends Component {
 
   render() {
     return <div>
-      <Search />
+      <Router>
+        <Route exact path="/" render={( ) => {
+          return <div>
+            <Search/>
+          </div>
+        }}></Route>
+      </Router>
     </div>
   }
 }
