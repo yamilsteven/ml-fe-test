@@ -1,0 +1,26 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+
+.headline{
+    color: $mine-shaft;
+    line-height: 1.4;
+
+    &__s {
+        @include font-size(12);
+    }
+    
+    &__m {
+        @include font-size(14);
+    }
+    
+    &__l {
+        @include font-size(14);
+
+        @include from(tablet) {
+            @include font-size(18); 
+        }
+    }
+    
+    &__xl {
+        @include font-size(24);
+    }
+}

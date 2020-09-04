@@ -12,21 +12,8 @@ const Search = () => {
     const handleSearch = event => {
         event.preventDefault();
         event.stopPropagation();
-        console.log("SEARCH")
-
         window.location = "/items?search="+search;
-
-        /*
-        event.preventDefault();
-        event.stopPropagation();
-        context.router.transitionTo("https://www.google.com");
-        */
     }
-
-    useEffect(() => {
-        //esto usar para relacionadas
-    }, [search])
-
 
     return (
         <div className="search">
