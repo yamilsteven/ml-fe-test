@@ -11,8 +11,14 @@
         border-bottom: 1px solid $gallery;
         display: flex;
         flex-wrap: wrap;
+        min-height: 205px;
         padding: 16px;
+        transition: transform .2s;
         width: 100%;
+
+        &:hover {
+            transform: scale(1.03);
+        }
 
         &__img {
             width: 35%;
@@ -35,6 +41,14 @@
 
             @include from(tablet) {
                 width: 55%;
+            }
+
+            .title {
+                width: 100%;
+
+                @include from(desktop) {
+                    width: 80%;
+                }
             }
 
             .price {

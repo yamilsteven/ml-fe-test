@@ -68,15 +68,13 @@ const ResultPage = () => {
             return (
             <div>
                 <Search/>
-                <ul className="cards">
+                <div className="cards">
                     { this.state.items.map(item => 
-                        <li className="cards__item">
+                        <a href={item.permalink} className="cards__item" title={item.title}>
                             <div className="cards__item__img">
-                                <a href={item.permalink} className="" title={item.title}>
-                                    <figure className="">
-                                        <img src={item.thumbnail} className="" alt={item.title}/>
-                                    </figure>
-                                </a>
+                                <figure className="">
+                                    <img src={item.thumbnail} className="" alt={item.title}/>
+                                </figure>
                             </div>
                             <div className="cards__item__content">
                                 <div className="price">
@@ -93,9 +91,9 @@ const ResultPage = () => {
                             <div class="cards__item__city">
                                 <span className="headline headline__s">{item.address.state_name}</span>
                             </div>
-                        </li>)
+                        </a>)
                     }
-                </ul>
+                </div>
             </div>
             )
         }
