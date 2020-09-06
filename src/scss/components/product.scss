@@ -1,0 +1,83 @@
+@import '../base';
+
+.product {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    padding: 20px;
+
+    &__img {
+        width: 100%;
+        max-width: 680px;
+
+
+        @include from(tablet) {
+            width: 50%;
+        }
+        
+        img {
+            width: 100%;
+        }
+    }
+
+    &__info {
+        width: 100%;
+
+        @include from(tablet) {
+            width: 40%;
+        }
+
+        .condition {
+            margin: 12px 0;
+
+            @include from(desktop) {
+                margin-bottom: 0;
+            }
+        }
+
+        .headline {
+            line-height: 1.5;
+            margin: 16px 0;
+
+            @include from(tablet) {
+                margin: 32px 0;
+            }
+
+            @include from(desktop) {
+                margin: 32px 0;
+            }
+
+            &__xl {
+                margin-top: 16px;
+            }
+
+            &__xxl, 
+            &__xl {
+                font-weight: 600;
+            }
+        }
+
+        .price {
+            margin: 12px 0;
+
+            @include from(desktop) {
+                margin: 32px 0;
+            }
+        }
+
+        .buy-button {
+            background: $dodger-blue;
+            border-radius: 5px;
+            color: $white;
+            margin: 25px auto;
+            max-width: 300px;
+            padding: 15px;
+            text-align: center;
+            width: 100%;
+
+            @include from(desktop) {
+                margin: 32px 0;
+            }
+        }
+    }
+}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;600&display=swap');
 
 .headline{
     color: $mine-shaft;
@@ -22,5 +22,13 @@
     
     &__xl {
         @include font-size(24);
+    }
+
+    &__xxl {
+        @include font-size(36);
+
+        @include from(desktop) {
+            @include font-size(46);
+        } 
     }
 }

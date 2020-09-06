@@ -5,6 +5,7 @@ import Search from './components/Search'
 import ResultPage from './components/ResultPage'
 
 import './App.scss';
+import Product from './components/Product';
 
 class App extends Component {
   state = {}
@@ -17,9 +18,14 @@ class App extends Component {
             <Search/>
           </div>
         }}></Route>
-        <Route path="/items" render={( ) => {
+        <Route exact path="/items" render={( ) => {
           return <div>
             <ResultPage/>
+          </div>
+        }}></Route>
+        <Route path="/items/:id" render={( ) => {
+          return <div>
+            <Product/>
           </div>
         }}></Route>
       </Router>
