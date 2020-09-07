@@ -56,11 +56,10 @@ const ResultPage = () => {
         }
         
         componentDidMount() {
-            axios.get(`https://api.mercadolibre.com/sites/MLA/search?q=:macbook pro`)
+            axios.get(`/search`)
             .then(res => {
-                const items = res.data.results.slice(0, 4);
+                const items = res.data.items.data.slice(0, 4);
                 this.setState({ items });
-                console.log("DATA:::", items)
             })
         }
         

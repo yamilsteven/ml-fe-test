@@ -23,6 +23,15 @@
     &__xl {
         @include font-size(24);
     }
+    
+    &__xl--2 {
+        @include font-size(22);
+        font-weight: 600;
+
+        @include from(tablet) {
+            @include font-size(28);
+        }
+    }
 
     &__xxl {
         @include font-size(36);
@@ -31,4 +40,9 @@
             @include font-size(46);
         } 
     }
+}
+
+.body {
+    @include font-size(16);
+    line-height: 1.5;
 }

@@ -1,68 +1,133 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# MercadoLibre Yamil Lasso Front End Test
 
-In the project directory, you can run:
+> MercadoLibre Front End Test
 
-### `npm start`
+## Instalación
 
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+1. Descargar el repositorio:
+>Rama actualizada master
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+for master:
+```bash
+git clone https://github.com/yamilsteven/ml-fe-test.git
+```
 
-### `npm test`
+2. Usar npm para instalar dependencias
+```bash
+npm i
+```
 
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Uso
 
-### `npm run build`
+1. Para servir en local, primero necesitamos levantar el servidor donde fueron creados los Endpoints a partir de la API pública dada
+```bash
+# Este se servirá en el puerto :8000 (en el package json se creó la regla del proxy para no usar el /localhost/ en el código
+cd ml-fe-test/server
+node index.js
+```
+```bash
+2. Para correr el Front End
 
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
+# Este se servirá en el puerto :3000 
+cd ml-fe-test
+npm start
+```
+## Información importante acerca del proyecto
 
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
+1. Tags de HTML5 semánticos usados
+2. Los estilos fueron creados pensando en "mobile first", se crearon los siguientes breakpoints
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+```bash
+$bp-mobile: 300px;
+$bp-tablet: 600px;
+$bp-desktop: 1024px;
+```
 
-### `npm run eject`
+>Uso de mixins:
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+Para los breakpoints mencionados se creó un mixin el cuál podemos extender en nuestros componentes scss
+```bash
+@inlude from(mobile) {
+ //estilos para mobile
+}
+@inlude from(tablet) {
+ //estilos para tablet
+}
+@inlude from(desktop) {
+ //estilos para desktop
+}
+```
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Para el tamaño de fuentes, se creó un mixin que convierte de px a rem
+```bash
+en scss: @include font-size(20)
+renderizado: font-size: 20px; and font-size: 1.25rem;
+```
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+3. Fuente usada: Roboto de libre uso, tomada e importada desde Google Fonts
 
-## Learn More
+4. Para pre procesadores usé SCSS, los diferentes componentes pueden ser encontrados en /src/scss/components
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+### Tech stack
+NODE
 
-### Code Splitting
+EXPRESS 
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
+NPM
 
-### Analyzing the Bundle Size
+HTML5
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
+CSS3
 
-### Making a Progressive Web App
+SASS
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
+ES6
 
-### Advanced Configuration
+REACT
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
+Axios
 
-### Deployment
+### Estructura del sitio
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
+Principalmente el sitio tiene la siguiente estructura
 
-### `npm run build` fails to minify
+>Tengo el archivo App.js como archivo principal
+```bash
+/src/App.js
+```
 
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+>Para la creación de las páginas según instrucciones dadas
+```bash
+/ (HOME) este renderiza sólo la barra de búsqueda con ayuda de React Router
+
+/items?search= página de resultados de búsqueda de acuerdo al query dado, también renderiza la barra de búsqueda
+
+/items/:id página de producto con su información y descripción
+```
+
+>Componentes
+```bash
+/src/components/Search.js
+/src/components/ResultPage.js
+/src/components/Product.js
+/src/components/Description.js
+```
+
+## Interacción - JS
+
+Con Express creé las reglas para consumir la API pública y retornar los datos que necesito
+
+>En el Home el usuario encuentra la barra de búsqueda en la cuál ingresa el query a consultar en el Endpoint
+
+>Una vez se hace el submit del form, el sitio hace una redirección a la url con el parámetro /items?search dónde se lista el resultado de búsqueda
+
+>Se muestran 4 resultados de acuerdo a los criterios de aceptación del ejercicio 
+
+>El usuario hace click a un item listado, el sitio redirecciona a la url propia del producto con el parámetro /items/:id
+
+> En la página de producto encontramos la información solicitada
+
+### Aprecio su tiempo leyendo este documento yamilsteven@hotmail.com +57 314 888 0916

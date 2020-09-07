@@ -3,3 +3,12 @@
 @import '_variables';
 @import '_mixins';
 @import '_typography';
+
+body {
+    background: $gallery;
+}
+
+.o-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}

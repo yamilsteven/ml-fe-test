@@ -3,8 +3,8 @@ import axios from 'axios';
 import { Link, Redirect } from 'react-router-dom';
 
 import Search from './Search';
+import Description from './Description';
 
-import '../scss/base.scss';
 import '../scss/components/product.scss';
 
 export default class Product extends Component {
@@ -13,11 +13,10 @@ export default class Product extends Component {
     }
     
     componentDidMount() {
-        axios.get(`https://api.mercadolibre.com/items/MLA847743217`)
+        axios.get(`/productdetail`)
         .then(res => {
-            const product = res.data;
+            const product = res.data.item;
             this.setState({ product });
-            console.log("PRODUCT:::", product)
         })
     }
     
@@ -25,16 +24,16 @@ export default class Product extends Component {
         return (
         <div>
             <Search/>
-            <div className="product">
+            <div className="product o-container">
                 <div className="product__img">
                     <figure className="">
-                        <img src={this.state.product.thumbnail} className="" alt={this.state.product.title}/>
+                        <img src={this.state.product.picture} className="" alt={this.state.product.title}/>
                     </figure>
                 </div>
                 <div className="product__info">
                     <div className="condition headline headline__m">
                         <span>{this.state.product.condition} - </span>
-                        <span>{this.state.product.sold_quantity} </span>
+                        <span>{this.state.product.sold} </span>
                         <span>vendidos</span>
                     </div>
                     <h2 className="headline headline__xl">{this.state.product.title}</h2>
@@ -44,11 +43,12 @@ export default class Product extends Component {
                             <span className="price__tag-value">{this.state.product.price}</span>
                         </span>
                     </div>
-                    <div class="buy-button">
-                        <span class="buy-button__content">Comprar</span>
+                    <div className="buy-button">
+                        <span className="buy-button__content">Comprar</span>
                     </div>
                 </div>
             </div>
+            <Description/>
         </div>
         )
     }
