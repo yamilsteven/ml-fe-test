@@ -26,9 +26,10 @@ npm i
 cd ml-fe-test/server
 node index.js
 ```
-```bash
+
 2. Para correr el Front End
 
+```bash
 # Este se servirá en el puerto :3000 
 cd ml-fe-test
 npm start
