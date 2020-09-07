@@ -1,4 +1,4 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 
 
@@ -11,7 +11,10 @@ export default class Description extends Component {
     }
     
     componentDidMount() {
-        axios.get(`/productdescription`)
+        var pageURL = window.location.href;
+        var lastURLSegment = pageURL.substr(pageURL.lastIndexOf('/') + 1);
+        const itemId = lastURLSegment;
+        axios.get('/productdescription', { params: {itemId}})
         .then(res => {
             const description = res.data.item_description.description;
             this.setState({ description });

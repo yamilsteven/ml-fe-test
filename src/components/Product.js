@@ -1,6 +1,5 @@
-import React, { Component, useState, useEffect } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
-import { Link, Redirect } from 'react-router-dom';
 
 import Search from './Search';
 import Description from './Description';
@@ -13,7 +12,10 @@ export default class Product extends Component {
     }
     
     componentDidMount() {
-        axios.get(`/productdetail`)
+        var pageURL = window.location.href;
+        var lastURLSegment = pageURL.substr(pageURL.lastIndexOf('/') + 1);
+        const itemId = lastURLSegment;
+        axios.get('/productdetail', { params: {itemId}})
         .then(res => {
             const product = res.data.item;
             this.setState({ product });
@@ -48,7 +50,7 @@ export default class Product extends Component {
                     </div>
                 </div>
             </div>
-            <Description/>
+            <Description itemId = {this.itemId}/>
         </div>
         )
     }
